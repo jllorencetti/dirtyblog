@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+    {% if posts %}
+        {% for post in posts %}
+            {{ post.few_content()|safe }}
+            <a class="btn btn-success btn-xs" href="{{ url_for('post', post_url=post.url) }}">Read more...</a>
+            <br/>
+            Published date: {{ post.get_str_datetime() }}
+            <hr/>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

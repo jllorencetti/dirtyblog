@@ -1,0 +1,23 @@
+Sample post
+=
+
+-Your markdown goes here-
+
+The filename for each post must follow the pattern:
+YYYY-MM-DD_post-url_Post Title
+
+As you can see, the filename consist of three section separated by an underscore. 
+
+There is date_URL_title of each post.
+
+All you need to do is create a file following the previous pattern and place it in the 'posts' folder.
+
+You will also need to change some parameters for Google Analytics (base.html) and Twitter, Google +, Facebook and Disqus (post.html). You need to put your name as the author in recent_feed, where the atom feed is generated.
+
+You can change the location of posts using the posts_directory variable in the models.py file.
+
+You can find more examples for markdown [here](https://pythonhosted.org/Markdown/) and [here](http://daringfireball.net/projects/markdown/).
+
+And look at this cute kitten... :)
+
+![Cute kitten](http://placekitten.com/800/500)
