@@ -4,6 +4,7 @@ import os
 import codecs
 import markdown
 
+import config
 
 posts_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'posts')
 cached_posts = []
@@ -44,7 +45,7 @@ class Post(object):
         return self.get_datetime().strftime("%d/%m/%Y")
 
     def few_content(self):
-        return markdown.markdown(self.get_content()[:400] + '...')
+        return markdown.markdown(self.get_content()[:config.PREVIEW_POST_SIZE] + '...')
 
     def get_content(self):
         with codecs.open(os.path.join(posts_directory, self.filename), 'r', 'utf-8') as f:

@@ -18,6 +18,9 @@ HOME_MAX_POSTS = 5
 # Max posts to show on feeds
 FEEDS_MAX_POSTS = 5
 
+# Set the content size for previews
+PREVIEW_POST_SIZE = 400
+
 # Set your trackingId on Google Analytics create method.
 # More info on: https://developers.google.com/analytics/devguides/collection/analyticsjs/method-reference#create
 GOOGLE_ANALYTICS_TRACKING_ID = 'UA-XXXXXXXX-X'
