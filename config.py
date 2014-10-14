@@ -3,6 +3,9 @@
 # Set your blog name
 BLOG_NAME = 'Dirtyblog'
 
+# Set your base title, used on main page
+BLOG_BASE_TITLE = 'Your base title goes here'
+
 # Set your trackingId on Google Analytics create method.
 # More info on: https://developers.google.com/analytics/devguides/collection/analyticsjs/method-reference#create
 GOOGLE_ANALYTICS_TRACKING_ID = 'UA-XXXXXXXX-X'
