@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html', posts=get_all_posts()[:5], menu_posts=get_all_posts(), config=config)
+    return render_template('index.html', posts=get_all_posts()[:config.HOME_MAX_POSTS], menu_posts=get_all_posts(), config=config)
 
 
 @app.route('/about')
@@ -34,7 +34,7 @@ def post(post_url):
 @app.route('/recent.atom')
 def recent_feed():
     feed = AtomFeed('Recente', feed_url=request.url, url=request.url_root)
-    articles = get_all_posts()[:5]
+    articles = get_all_posts()[:config.FEEDS_MAX_POSTS]
     for article in articles:
         feed.add(article.title,
                  content=unicode(article.get_content()),

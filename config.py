@@ -12,6 +12,12 @@ GITHUB_PROFILE = 'https://github.com/username'
 # Set your blog Twitter profile URL. If you don't want to use one, set None.
 TWITTER_PROFILE = 'https://twitter.com/username'
 
+# Max posts to show on home page
+HOME_MAX_POSTS = 5
+
+# Max posts to show on feeds
+FEEDS_MAX_POSTS = 5
+
 # Set your trackingId on Google Analytics create method.
 # More info on: https://developers.google.com/analytics/devguides/collection/analyticsjs/method-reference#create
 GOOGLE_ANALYTICS_TRACKING_ID = 'UA-XXXXXXXX-X'
