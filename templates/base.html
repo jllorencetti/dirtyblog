@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>{% block title %}Your base title goes here{% endblock %} - Dirtyblog</title>
+  <title>{% block title %}Your base title goes here{% endblock %} - {{ config.BLOG_NAME }}</title>
   <link rel="stylesheet" href="/static/css/bootstrap.min.css"/>
   <link rel="stylesheet" href="/static/css/dirty.css"/>
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
@@ -30,7 +30,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="{{ url_for('index') }}">Dirtyblog</a>
+      <a class="navbar-brand" href="{{ url_for('index') }}">{{ config.BLOG_NAME }}</a>
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
