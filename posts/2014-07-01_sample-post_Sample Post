@@ -12,7 +12,7 @@ There is date_URL_title of each post.
 
 All you need to do is create a file following the previous pattern and place it in the 'posts' folder.
 
-You will also need to change some parameters for Google Analytics (base.html) and Twitter, Google +, Facebook and Disqus (post.html). You need to put your name as the author in recent_feed, where the atom feed is generated.
+You will also need to change the parameters in the config.py file.
 
 You can change the location of posts using the posts_directory variable in the models.py file.
 

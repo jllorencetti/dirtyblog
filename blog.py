@@ -4,31 +4,36 @@ from flask.templating import render_template
 from werkzeug.contrib.atom import AtomFeed
 
 from models import get_post_by_url, get_all_posts
-
 import config
+
 
 app = Flask(__name__)
 
 
+@app.context_processor
+def inject_config():
+    return dict(config=config)
+
+
 @app.route('/')
 def index():
-    return render_template('index.html', posts=get_all_posts()[:config.HOME_MAX_POSTS], menu_posts=get_all_posts(), config=config)
+    return render_template('index.html', posts=get_all_posts()[:config.HOME_MAX_POSTS], menu_posts=get_all_posts())
 
 
 @app.route('/about')
 def about():
-    return render_template('about.html', menu_posts=get_all_posts(), config=config)
+    return render_template('about.html', menu_posts=get_all_posts())
 
 
 @app.route('/books')
 def books():
-    return render_template('books.html', menu_posts=get_all_posts(), config=config)
+    return render_template('books.html', menu_posts=get_all_posts())
 
 
 @app.route('/posts/<post_url>')
 def post(post_url):
     actual_post = get_post_by_url(post_url)
-    return render_template('post.html', post=actual_post, menu_posts=get_all_posts(), config=config)
+    return render_template('post.html', post=actual_post, menu_posts=get_all_posts())
 
 
 @app.route('/recent.atom')
@@ -47,4 +52,4 @@ def recent_feed():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=config.DEBUG)

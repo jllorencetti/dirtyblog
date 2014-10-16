@@ -1,5 +1,8 @@
 # Dirty blogger configuration file
 
+# Set the debug mode
+DEBUG = True
+
 # Set your blog name
 BLOG_NAME = 'Dirtyblog'
 
