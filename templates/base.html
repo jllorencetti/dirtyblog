@@ -22,6 +22,11 @@
 <body>
 <div class="navbar navbar-inverse navbar-static-top" role="navigation">
   <div class="container">
+  {% if config.DEBUG %}
+  <div class="text-danger">
+    <h3>You are running in debug mode, this <strong>will</strong> cause the edit and post features to be enabled. Don't do this in production.</h3>
+  </div>
+  {% endif %}
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse"
               data-target=".navbar-collapse">
