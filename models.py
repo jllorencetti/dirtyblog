@@ -4,9 +4,8 @@ import os
 import codecs
 import markdown
 
-import config
+from config import POSTS_DIRECTORY, PREVIEW_POST_SIZE
 
-posts_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'posts')
 cached_posts = []
 
 
@@ -18,9 +17,10 @@ def get_post_by_url(post_url):
 
 def get_all_posts():
     if not cached_posts:
-        for _, _, files in os.walk(u'' + posts_directory.decode()):
+        for _, _, files in os.walk(u'' + POSTS_DIRECTORY.decode()):
             for filename in files:
-                post = Post(filename.split('_')[0], filename.split('_')[1], filename.split('_')[2], filename)
+                post = Post(filename.split('_')[0], filename.split('_')[1], filename.split('_')[2],
+                            filename)
                 cached_posts.append(post)
         cached_posts.sort(key=lambda x: x.get_datetime(), reverse=True)
     return cached_posts
@@ -45,10 +45,10 @@ class Post(object):
         return self.get_datetime().strftime("%d/%m/%Y")
 
     def few_content(self):
-        return markdown.markdown(self.get_content()[:config.PREVIEW_POST_SIZE] + '...')
+        return markdown.markdown(self.get_content()[:PREVIEW_POST_SIZE] + '...')
 
     def get_content(self):
-        with codecs.open(os.path.join(posts_directory, self.filename), 'r', 'utf-8') as f:
+        with codecs.open(os.path.join(POSTS_DIRECTORY, self.filename), 'r', 'utf-8') as f:
             return markdown.markdown(f.read())
 
 

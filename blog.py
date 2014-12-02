@@ -17,7 +17,8 @@ def inject_config():
 
 @app.route('/')
 def index():
-    return render_template('index.html', posts=get_all_posts()[:config.HOME_MAX_POSTS], menu_posts=get_all_posts())
+    return render_template('index.html', posts=get_all_posts()[:config.HOME_MAX_POSTS],
+                           menu_posts=get_all_posts())
 
 
 @app.route('/about')
