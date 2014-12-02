@@ -1,7 +1,7 @@
 import datetime
-
 import os
 import codecs
+
 import markdown
 
 from config import POSTS_DIRECTORY, PREVIEW_POST_SIZE

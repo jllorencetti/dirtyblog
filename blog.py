@@ -3,8 +3,8 @@ from flask import Flask, request
 from flask.templating import render_template
 from werkzeug.contrib.atom import AtomFeed
 
-from models import get_post_by_url, get_all_posts
 import config
+from models import get_post_by_url, get_all_posts
 
 
 app = Flask(__name__)
