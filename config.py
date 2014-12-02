@@ -1,13 +1,16 @@
 # Dirty blogger configuration file
 import os
 
+# Base directory
+BASE_DIR = os.path.dirname(__file__)
+
 # Set the debug mode
 DEBUG = True
 
 # Set your blog name
 BLOG_NAME = 'Dirtyblog'
 
-POSTS_DIRECTORY = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'posts')
+POSTS_DIRECTORY = os.path.join(BASE_DIR, 'posts')
 
 # Set your base title, used on main page
 BLOG_BASE_TITLE = 'Your base title goes here'
