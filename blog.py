@@ -1,5 +1,5 @@
 # coding=utf-8
-from flask import Flask, request
+from flask import Flask, request, redirect, url_for
 from flask.templating import render_template
 from werkzeug.contrib.atom import AtomFeed
 
@@ -39,6 +39,11 @@ def post(post_url):
                            menu_posts=get_all_posts())
 
 
+@app.route('/posts/new/')
+def new_post():
+    if not config.DEBUG:
+        return redirect(url_for('index'))
+    return render_template('new_post.html')
 
 
 @app.route('/recent.atom')
