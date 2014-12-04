@@ -17,7 +17,8 @@ def inject_config():
 
 @app.route('/')
 def index():
-    return render_template('index.html', posts=get_all_posts()[:config.HOME_MAX_POSTS],
+    return render_template('index.html',
+                           posts=get_all_posts()[:config.HOME_MAX_POSTS],
                            menu_posts=get_all_posts())
 
 
@@ -34,7 +35,10 @@ def books():
 @app.route('/posts/<post_url>')
 def post(post_url):
     actual_post = get_post_by_url(post_url)
-    return render_template('post.html', post=actual_post, menu_posts=get_all_posts())
+    return render_template('post.html', post=actual_post,
+                           menu_posts=get_all_posts())
+
+
 
 
 @app.route('/recent.atom')
