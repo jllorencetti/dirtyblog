@@ -60,19 +60,7 @@
 </div>
 
 <div class="container">
-  <div class="row">
-    <div class="col-md-9">
-      {% block content %}{% endblock %}
-    </div>
-    <div class="col-md-3 well">
-      <h5>Latest Entries</h5>
-      <ul class="nav navbar">
-        {% for post in menu_posts %}
-          <li><a href="{{ url_for('post', post_url=post.url) }}">{{ post.title }}</a></li>
-        {% endfor %}
-      </ul>
-    </div>
-  </div>
+  {% block main %}{% endblock %}
 </div>
 <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
