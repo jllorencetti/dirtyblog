@@ -1,66 +1,68 @@
-{% extends "base.html" %}
+{% extends "blog.html" %}
 
 {% block title %}{{ post.title }}{% endblock %}
 
 {% block content %}
-    {# Facebook stuff #}
-    <div id="fb-root"></div>
-    <script>(function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
+  {# Facebook stuff #}
+  <div id="fb-root"></div>
+  <script>(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+
+  <article>
+    {{ post.get_content()|safe }}
+
+    {# Social #}
+    <div class="well">
+      <a href="https://twitter.com/share" class="twitter-share-button"
+         data-url="{{ config.TWITTER_DATA_URL }}" data-lang="pt">Tweet</a>
+
+      <div class="g-plusone"></div>
+      <div class="fb-like" data-href="{{ config.FACEBOOK_LIKE_DATA_HREF }}" data-layout="standard"
+           data-action="like" data-show-faces="true"
+           data-share="true"></div>
+    </div>
+
+    {# Twitter script #}
+    <script>!function (d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+      if (!d.getElementById(id)) {
         js = d.createElement(s);
         js.id = id;
-        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+        js.src = p + '://platform.twitter.com/widgets.js';
         fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
-
-    <article>
-        {{ post.get_content()|safe }}
-
-        {# Social #}
-        <div class="well">
-            <a href="https://twitter.com/share" class="twitter-share-button" data-url="{{ config.TWITTER_DATA_URL }}" data-lang="pt">Tweet</a>
-
-            <div class="g-plusone"></div>
-            <div class="fb-like" data-href="{{ config.FACEBOOK_LIKE_DATA_HREF }}" data-layout="standard" data-action="like" data-show-faces="true"
-                 data-share="true"></div>
-        </div>
-
-        {# Twitter script #}
-        <script>!function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
-            if (!d.getElementById(id)) {
-                js = d.createElement(s);
-                js.id = id;
-                js.src = p + '://platform.twitter.com/widgets.js';
-                fjs.parentNode.insertBefore(js, fjs);
-            }
-        }(document, 'script', 'twitter-wjs');</script>
-        {# Facebook script #}
-        <script type="text/javascript">
-            window.___gcfg = {lang: 'pt-BR'};
-
-            (function () {
-                var po = document.createElement('script');
-                po.type = 'text/javascript';
-                po.async = true;
-                po.src = 'https://apis.google.com/js/platform.js';
-                var s = document.getElementsByTagName('script')[0];
-                s.parentNode.insertBefore(po, s);
-            })();
-        </script>
-    </article>
-    <hr/>
-    <div id="disqus_thread"></div>
+      }
+    }(document, 'script', 'twitter-wjs');</script>
+    {# Facebook script #}
     <script type="text/javascript">
-        var disqus_shortname = '{{ config.DISQUS_SHORTNAME }}';
-        (function () {
-            var dsq = document.createElement('script');
-            dsq.type = 'text/javascript';
-            dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
+      window.___gcfg = {lang: 'pt-BR'};
+
+      (function () {
+        var po = document.createElement('script');
+        po.type = 'text/javascript';
+        po.async = true;
+        po.src = 'https://apis.google.com/js/platform.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(po, s);
+      })();
     </script>
-    <noscript>You need JavaScript enabled to ready and write comments.</noscript>
+  </article>
+  <hr/>
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = '{{ config.DISQUS_SHORTNAME }}';
+    (function () {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>You need JavaScript enabled to ready and write comments.</noscript>
 {% endblock %}
