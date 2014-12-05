@@ -8,8 +8,8 @@
   <link rel="stylesheet" href="/static/css/dirty.css"/>
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
         rel="stylesheet">
+  {% block moarstyles %}{% endblock %}
   <script src="/static/js/modernizr.js"></script>
-  <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
   <script>
     (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
     function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
@@ -64,5 +64,6 @@
 </div>
 <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+{% block moarscripts %}{% endblock %}
 </body>
 </html>
