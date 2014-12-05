@@ -4,9 +4,31 @@
 
 {% block main %}
   <div class="col-md-6">
-  
-  </div>
-  <div class="col-md-6">
+    <h4>Content</h4>
+
+    <form action="">
+      <textarea id="content" rows="30" class="content-area"></textarea>
+    </form>
 
   </div>
+  <div class="col-md-6">
+    <h4>Preview</h4>
+    <span id="preview"></span>
+  </div>
+{% endblock %}
+
+{% block moarstyles %}
+  <style>
+    .content-area {
+      width: 100%;
+    }
+  </style>
+{% endblock %}
+
+{% block moarscripts %}
+  <script>
+    $("#content").on("keyup", function () {
+      $("#preview").html($("#content").val());
+    });
+  </script>
 {% endblock %}
