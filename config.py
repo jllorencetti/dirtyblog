@@ -44,4 +44,4 @@ FACEBOOK_LIKE_DATA_HREF = 'http://www.your-web-site-here.net'
 
 # Set your shortname on Disqus.
 # More info on: https://help.disqus.com/customer/portal/articles/472098-javascript-configuration-variables
-DISQUS_SHORTNAME = 'your-shotname-here'
+DISQUS_SHORTNAME = 'your-shortname-here'

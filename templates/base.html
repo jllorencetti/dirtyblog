@@ -46,11 +46,11 @@
       </ul>
       <ul class="nav navbar-nav pull-right">
         {% if config.GITHUB_PROFILE %}
-        <li><a href="https://github.com/<username>"><i
+        <li><a href="{{ config.GITHUB_PROFILE }}"><i
             class="fa fa-github fa-lg"></i> GitHub</a></li>
         {% endif %}
         {% if config.TWITTER_PROFILE %}
-        <li><a href="https://twitter.com/<username>"><i
+        <li><a href="{{ config.TWITTER_PROFILE }}"><i
             class="fa fa-twitter fa-lg"></i> Twitter</a></li>
         {% endif %}
       </ul>
