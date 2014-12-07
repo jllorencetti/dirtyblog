@@ -43,7 +43,9 @@
         <li><a href="{{ url_for('about') }}">About</a></li>
         <li><a href="{{ url_for('books') }}">Books</a></li>
         <li><a href="{{ url_for('recent_feed') }}">Atom Feed</a></li>
+        {% if config.DEBUG %}
         <li><a href="{{ url_for('new_post') }}">New Post</a></li>
+        {% endif %}
       </ul>
       <ul class="nav navbar-nav pull-right">
         {% if config.GITHUB_PROFILE %}
