@@ -1,5 +1,6 @@
-import datetime
 import os
+import glob
+import datetime
 import codecs
 
 import markdown
@@ -17,11 +18,11 @@ def get_post_by_url(post_url):
 
 def get_all_posts():
     if not cached_posts:
-        for _, _, files in os.walk(u'' + POSTS_DIRECTORY.decode()):
-            for filename in files:
-                post = Post(filename.split('_')[0], filename.split('_')[1], filename.split('_')[2],
-                            filename)
-                cached_posts.append(post)
+        for filepath in glob.glob('{}/*_*_*'.format(POSTS_DIRECTORY)):
+            filename = os.path.split(filepath)[1]
+            post = Post(filename.split('_')[0], filename.split('_')[1], filename.split('_')[2],
+                        filename)
+            cached_posts.append(post)
         cached_posts.sort(key=lambda x: x.get_datetime(), reverse=True)
     return cached_posts
 
@@ -50,5 +51,3 @@ class Post(object):
     def get_content(self):
         with codecs.open(os.path.join(POSTS_DIRECTORY, self.filename), 'r', 'utf-8') as f:
             return markdown.markdown(f.read())
-
-
