@@ -20,12 +20,10 @@ If you want to edit the templates, some of these configurations can be deleted.
 
 Usage
 =
-As said above, you need to store you posts files in the posts directory, and file names should follow this pattern:
-YYYY-MM-DD_post-url_Post Title
+As said above, you need to store you posts files in the posts directory, and each post should have a URL, Title, Date and
+Content tags in the header of the file, check the sample post for information.
 
-There's a sample post inside the posts directory.
-
-Please, turn off the DEBUG mode in the config.py file. :P
+Please, turn off the DEBUG mode in the config.py file when deploying to "production". :P
 
 Hope you enjoy. :)
 
