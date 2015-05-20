@@ -8,14 +8,9 @@ Sample post
 
 -Your markdown goes here-
 
-The filename for each post must follow the pattern:
-YYYY-MM-DD_post-url_Post Title
+Each post should have a Date, URL, Title and Content tags.
 
-As you can see, the filename consist of three section separated by an underscore. 
-
-There is date_URL_title of each post.
-
-All you need to do is create a file following the previous pattern and place it in the 'posts' folder.
+All you need to do is create a file with the previous tags and place it in the 'posts' folder.
 
 You will also need to change the parameters in the config.py file.
 
