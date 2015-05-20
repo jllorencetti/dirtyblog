@@ -21,6 +21,8 @@ def get_all_posts():
         for filepath in glob.glob('{}/*'.format(POSTS_DIRECTORY)):
             filename = os.path.split(filepath)[1]
             info = get_fileinfo(os.path.join(POSTS_DIRECTORY, filename))
+            if not info['visible']:
+                continue
             post = Post(info['date'], info['url'], info['title'], filename)
             cached_posts.append(post)
         cached_posts.sort(key=lambda x: x.get_datetime(), reverse=True)
@@ -31,9 +33,7 @@ def parse_metadata(text):
     metas = {key.lower(): value for (key, value) in
              [line.split(': ') for line in text.splitlines()]}
 
-    for key in metas.keys():
-        if key == 'visible':
-            metas[key] = bool(metas[key])
+    metas['visible'] = 'True' in metas.get('visible', '')
 
     return metas
 

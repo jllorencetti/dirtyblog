@@ -51,6 +51,11 @@ Title: Hello World'''
         self.assertEquals(post.title, 'Sample Post')
         self.assertEquals(post.url, 'sample-post')
 
+    def test_get_invisible_post(self):
+        post = models.get_post_by_url('invisible-post')
+
+        self.assertIsNone(post)
+
 
 if __name__ == '__main__':
     unittest.main()
