@@ -18,13 +18,50 @@ def get_post_by_url(post_url):
 
 def get_all_posts():
     if not cached_posts:
-        for filepath in glob.glob('{}/*_*_*'.format(POSTS_DIRECTORY)):
+        for filepath in glob.glob('{}/*'.format(POSTS_DIRECTORY)):
             filename = os.path.split(filepath)[1]
-            post = Post(filename.split('_')[0], filename.split('_')[1], filename.split('_')[2],
-                        filename)
+            info = get_fileinfo(os.path.join(POSTS_DIRECTORY, filename))
+            post = Post(info['date'], info['url'], info['title'], filename)
             cached_posts.append(post)
         cached_posts.sort(key=lambda x: x.get_datetime(), reverse=True)
     return cached_posts
+
+
+def parse_metadata(text):
+    metas = {key.lower(): value for (key, value) in
+             [line.split(': ') for line in text.splitlines()]}
+
+    for key in metas.keys():
+        if key == 'visible':
+            metas[key] = bool(metas[key])
+
+    return metas
+
+
+def parse_content(lines):
+    content = ''
+    content_found = False
+    for line in lines:
+        if content_found:
+            content += line
+        if 'content' in line.lower():
+            content_found = True
+    return content
+
+
+def get_fileinfo(filename):
+    text = ''
+    with codecs.open(filename, 'r', 'utf-8') as f:
+        for line in f:
+            if 'content' in line.lower():
+                break
+            text += line
+    return parse_metadata(text)
+
+
+def get_filecontent(filename):
+    with codecs.open(filename, 'r', 'utf-8') as f:
+        return parse_content(f.readlines())
 
 
 class Post(object):
@@ -49,5 +86,4 @@ class Post(object):
         return markdown.markdown(self.get_content()[:PREVIEW_POST_SIZE] + '...')
 
     def get_content(self):
-        with codecs.open(os.path.join(POSTS_DIRECTORY, self.filename), 'r', 'utf-8') as f:
-            return markdown.markdown(f.read())
+        return markdown.markdown(get_filecontent(os.path.join(POSTS_DIRECTORY, self.filename)))
