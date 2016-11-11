@@ -1,3 +1,5 @@
+ [![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+
 About
 =
 This project is a little and simple Flask app which I use to maintain my blog.
